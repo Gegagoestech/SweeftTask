@@ -1,0 +1,35 @@
+<div class="row gx-3">
+  <h2 class="mb-3">This is Home Page</h2>
+
+  <div
+    *ngFor="let user of usersData; let i = index"
+    class="mb-3 col-md-4 col-lg-3"
+  >
+    <div class="card">
+      <img
+        [src]="user.imageUrl + '?v=' + i"
+        class="card-img-top"
+        alt="{{ user.name }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ user.name }}</h5>
+        <p class="card-text">{{ user.title }}</p>
+        <a [routerLink]="['/detailed', user?.id]" class="btn btn-primary"
+          >Go To Details</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="spinner" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- <a [routerLink]="['/detailed', user?.id]">
+        <pre>{{ user | json }}</pre>
+    </a>
+    
+</div> -->

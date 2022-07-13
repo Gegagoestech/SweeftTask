@@ -1,0 +1,74 @@
+<div class="row mb-5">
+  <div class="col-md-6 col-lg-4 mb-3 mb-md-0">
+    <img
+      class="w-100 rounded"
+      [src]="userData.imageUrl"
+      alt="{{ userData.name }}"
+    />
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <h2>{{ userData.prefix }} {{ userData.name }} {{ userData.lastName }}</h2>
+    <p>{{ userData.email }}</p>
+    <p>{{ userData.title }}</p>
+    <p>
+      Company Name
+      <b>{{ userData.company.suffix }} {{ userData.company.name }}</b>
+    </p>
+    <p>
+      Job Type <b>{{ userData.jobType }}</b>
+    </p>
+    <p>
+      Job Area <b>{{ userData.jobArea }}</b>
+    </p>
+    <p>
+      Job Description <b>{{ userData.jobDescriptor }}</b>
+    </p>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <p>
+      Country: <b>{{ userData.address.country }}</b>
+    </p>
+    <p>
+      City: <b>{{ userData.address.city }}</b>
+    </p>
+    <p>
+      State: <b>{{ userData.address.state }}</b>
+    </p>
+    <p>
+      Street Address: <b>{{ userData.address.streetAddress }}</b>
+    </p>
+    <p>
+      Zip Code: <b>{{ userData.address.zipCode }}</b>
+    </p>
+  </div>
+</div>
+
+<hr class="mb-5" />
+
+<div class="row gx-3">
+  <div
+    *ngFor="let user of userFriendsData; let i = index"
+    class="mb-3 col-md-4 col-lg-3"
+  >
+    <div class="card">
+      <img
+        [src]="user.imageUrl + '?v=' + i"
+        class="card-img-top"
+        alt="{{ user.name }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ user.name }}</h5>
+        <p class="card-text">{{ user.title }}</p>
+        <a [routerLink]="['/detailed', user?.id]" class="btn btn-primary"
+          >Go To Details</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="spinner" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
